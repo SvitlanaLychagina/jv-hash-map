@@ -76,7 +76,7 @@ public class MyHashMap<K, V> implements MyMap<K, V> {
         return hash & (capacity - 1);
     }
 
-    private Node<K, V>[] resize() {
+    private void resize() {
         capacity *= GROW_FACTOR;
         Node<K, V>[] newTable = (Node<K, V>[]) new Node[capacity];
         for (Node<K, V> node : table) {
@@ -91,7 +91,6 @@ public class MyHashMap<K, V> implements MyMap<K, V> {
         }
         table = newTable;
         threshold = (int) (capacity * DEFAULT_LOAD_FACTOR);
-        return table;
     }
 
     private static class Node<K, V> {
